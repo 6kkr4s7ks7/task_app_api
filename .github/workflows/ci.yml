@@ -47,7 +47,11 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: tasks-api-3.12-bandit-report
-          path: foo
+          path: _site
+      - run: |
+          cat > _site/index.html << 'EOP'
+          <h1>Test Report</h1>
+          EOP
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
